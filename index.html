@@ -280,11 +280,39 @@
 <div class="swiper-slide"><img src="./img/borjomi.jpg" alt=""></div>
 <div class="swiper-slide"><img src="./img/borjomi.jpg" alt=""></div>
 </div>
-
+<div class="new-carousel__dots">
+  <ul id="dotList" class="dot-list">
+    <li class="new-dot new-active-dot"></li>
+    <li class="new-dot"></li>
+    <li class="new-dot"></li>
+    <li class="new-dot"></li>
+    <li class="new-dot"></li>
+  </ul>
+</div>
 <div class="swiper-button-next"></div>
 <div class="swiper-button-prev"></div>
 </div>
 <style>
+  .swiper-button-next, .swiper-button-prev{
+    top: var(--swiper-navigation-top-offset, 43%);
+  }
+.swiper-button-next{
+  color: #FFFFFF;
+    width: 65px;
+    height: 65px;
+    background: #31B97B;
+    border-radius: 50%;
+    font-weight: 600;
+}
+.swiper-button-prev{
+  color: #FFFFFF;
+    width: 65px;
+    height: 65px;
+    background: #31B97B;
+    border-radius: 50%;
+    font-weight: 600;
+}
+
 .swiper-container {
 width: 100%;
 height: 100%;
@@ -297,6 +325,7 @@ background: transparent;
 display: flex;
 justify-content: center;
 align-items: center;
+/* margin-right: 24px !important; */
 }
 </style>
 
@@ -305,28 +334,76 @@ align-items: center;
   </div>
 </div> 
 
- <script>
+
+
+<style>
+  .new-carousel__dots {
+  text-align: center;
+}
+
+.dot-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.new-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #D9D9D940;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.new-active-dot {
+  background-color: #62B992;
+}
+
+
+</style>
+<script>
   document.addEventListener('DOMContentLoaded', function () {
-    // Initialize Slider 1
-    var slider1 = new Swiper('.slider1', {
-      slidesPerView: 1, // Show only one slide
-      spaceBetween: 30,
-      loop: true,
-      navigation: {
-        nextEl: '.slider1 .swiper-button-next',
-        prevEl: '.slider1 .swiper-button-prev',
-      },
-      // here the autoplay
-      slideToClickedSlide: true,
-      touch: true,
-      breakpoints: {
-        576: {
-          slidesPerView: 4, 
-        },
-      },
+  const dotItems = document.querySelectorAll('.new-dot');
+  const nextButton = document.querySelector('.swiper-button-next');
+  const prevButton = document.querySelector('.swiper-button-prev');
+
+  let currentIndex = 0;
+
+  // Function to toggle active dot
+  function toggleActiveDot(index) {
+    dotItems.forEach((dot, i) => {
+      dot.classList.remove('new-active-dot');
+      if (i === index) {
+        dot.classList.add('new-active-dot');
+      }
     });
+  }
+
+  // Event listener for next button click
+  nextButton.addEventListener('click', function () {
+    currentIndex++;
+    if (currentIndex >= dotItems.length) {
+      currentIndex = 0;
+    }
+    toggleActiveDot(currentIndex);
   });
-</script> 
+
+  // Event listener for previous button click
+  prevButton.addEventListener('click', function () {
+    currentIndex--;
+    if (currentIndex < 0) {
+      currentIndex = dotItems.length - 1;
+    }
+    toggleActiveDot(currentIndex);
+  });
+});
+
+</script>
+<!-- test -->
+
 <!-- autoplay: {
         delay: 2000,
       }, -->
@@ -455,6 +532,7 @@ align-items: center;
             padding: 50px;
 
           }
+          
           @media screen and (min-width: 577px) {
             .cards-wrapper {
               display: flex;
@@ -503,128 +581,190 @@ align-items: center;
 
 
 
-        <style>
-            .crimage{
-    height: 168px;
-   
-    width: 400px;
-    border-radius: 30px;
-          
-}
-
-              @media screen and (max-width: 576px) {
-
-            .crimage{
-              height: 168px;
-                width: 269px;
-                border-radius: 30px;
-            }
-            .carousel-wrapper{
-            width: 100%;
-            margin-left: -10px;
-            }
-            }
-          
-         
-        </style>
+       
         <div class="container " style="margin-top: 7rem;">
-          <div class="row align-items-center" style="background-color: white; border-radius: 30px; ">
+          <div class="row align-items-center pap" style="background-color: white; border-radius: 30px; ">
             <div class="col-lg-9 d-flex align-items-center " >
               <!-- <img style="max-width: 100%;" src="./img/Banner2.png" alt=""> -->
-              <div style="max-width: 100%; margin-top: -88px; margin-left: -47px;" class="section-wrapper" >
-                
-                <div  class="carousel-wrapper">
-                  <div class="carousel">
-                     <div class="carousel__card active" style="position: relative;">
-                      
-                      <img class="crimage"  alt="blog-image-3" src="./img/borjomi.jpg" />
-                     <div style="position: absolute; bottom: 0;right: 0; color: white; border-bottom-right-radius: 65%; border-bottom-left-radius: 65%;  background:  linear-gradient(180deg, rgba(44,115,161,0) 0%, rgba(0,0,0,0.5158438375350141) 100%, rgba(4,22,24,1) 100%, rgba(5,19,20,1) 100%);
-                     width: 100%;">
-                     <p style="text-align: center;">
-                      قصة حب تمثال على و نينو 
-                     </p>
-                     </div>
+              <div class="container">
+                <div class="row roww" style="overflow: hidden;">
+              
+                  <div class="swiper-container slider3">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide " id="wtf"><img id="swpsld" src="./img/borjomi.jpg" alt=""></div>
+                      <div class="swiper-slide " id="wtf"><img id="swpsld" src="./img/batumi.jpg" alt=""></div>
+                      <div class="swiper-slide " id="wtf"><img id="swpsld" src="./img/kutaisi.jpg" alt=""></div>
+                      <div class="swiper-slide " id="wtf"><img id="swpsld" src="./img/tbilisi.jpg" alt=""></div>
+                      <div class="swiper-slide " id="wtf"><img id="swpsld" src="./img/Email - Copy.png" alt=""></div>
+                      <div class="swiper-slide " id="wtf"><img id="swpsld" src="./img/borjomi.jpg" alt=""></div>
                     </div>
-                    <!--.carousel__card-->
-                    <div class="carousel__card " style="position: relative;">
-                      <div>
-                        <img class="crimage" alt="blog-image-1" src="./img/tbilisi.jpg" />
-                         <div style="position: absolute; bottom: 0;right: 0; color: white; border-bottom-right-radius: 65%; border-bottom-left-radius: 65%;  background:  linear-gradient(180deg, rgba(44,115,161,0) 0%, rgba(0,0,0,0.5158438375350141) 100%, rgba(4,22,24,1) 100%, rgba(5,19,20,1) 100%);
-                     width: 100%;">
-                     <p style="text-align: center;">
-                      قصة حب تمثال على و نينو 
-                     </p>
-
-                     </div>
-                      </div>
-                     
-                    </div>
-                    <!--.carousel__card-->
-                    <div class="carousel__card " style="position: relative;">
-                      <div>
-                        <img class="crimage" alt="blog-image-2" src="./img/kutaisi.jpg" />
-                         <div style="position: absolute; bottom: 0;right: 0; color: white; border-bottom-right-radius: 65%; border-bottom-left-radius: 65%;  background:  linear-gradient(180deg, rgba(44,115,161,0) 0%, rgba(0,0,0,0.5158438375350141) 100%, rgba(4,22,24,1) 100%, rgba(5,19,20,1) 100%);
-                     width: 100%;">
-                     <p style="text-align: center;">
-                      قصة حب تمثال على و نينو 
-                     </p>
-
-                     </div>
-                      </div>
-                     
-                    </div>
-                    <!--.carousel__card-->
-                     <div class="carousel__card " style="position: relative;">
-                      <div>
-                        <img class="crimage" alt="blog-image-3" src="./img/batumi.jpg" />
-                         <div style="position: absolute; bottom: 0;right: 0; color: white; border-bottom-right-radius: 65%; border-bottom-left-radius: 65%;  background:  linear-gradient(180deg, rgba(44,115,161,0) 0%, rgba(0,0,0,0.5158438375350141) 100%, rgba(4,22,24,1) 100%, rgba(5,19,20,1) 100%);
-                     width: 100%;">
-                     <p style="text-align: center;">
-                      قصة حب تمثال على و نينو 
-                     </p>
-
-                     </div>
-                      </div>
-                      
-                    </div>
-                    <!--.carousel__card-->
-                    <div class="carousel__card " style="position: relative;">
-                      <div>
-                        <img class="crimage" alt="blog-image-3" src="./img/batumi.jpg" />
-                         <div style="position: absolute; bottom: 0;right: 0; color: white; border-bottom-right-radius: 65%; border-bottom-left-radius: 65%;  background:  linear-gradient(180deg, rgba(44,115,161,0) 0%, rgba(0,0,0,0.5158438375350141) 100%, rgba(4,22,24,1) 100%, rgba(5,19,20,1) 100%);
-                     width: 100%;">
-                     <p style="text-align: center;">
-                      قصة حب تمثال على و نينو 
-                     </p>
-
-                     </div>
-                      </div>
-                      
-                    </div>
-                    <!--.carousel__card-->
-                
-                    <div id="next" class="carousel__button--next"></div>
-                    <div id="prev" class="carousel__button--prev"></div>
-                
+                    <!-- <div class="carousel-dots">
+                      <ul class="dot-list">
+                        <li class="custom-dot active-dot"></li>
+                        <li class="custom-dot"></li>
+                        <li class="custom-dot"></li>
+                        <li class="custom-dot"></li>
+                        <li class="custom-dot"></li>
+                        <li class="custom-dot"></li>
+                      </ul>
+                    </div> -->
+                    <div class="custom-swiper-button-next"></div>
+                    <div class="custom-swiper-button-prev"></div>
                   </div>
-                  <!--.carousel-->
-                  <div class="carousel__dots">
-                    <ul id="dotList">
-                      <li class="dot active"></li>
-                      <li class="dot "></li>
-                      <li class="dot"></li>
-                      <li class="dot"></li>
-                      <li class="dot"></li>
-                    </ul>
-                  </div>
-                  <!--.carousel__dots-->
+              
+                  <style>
+                    #wtf {
+                      width: 326px;
+                      height: 196px;
+                    }
+                    .slider3  {
+                      padding: 0;
+                    }
+                    .roww{
+                      width: 652px;
+                    }
+                    .pap{
+                      height: 494px;
+                    }
+                    #swpsld{
+                      width: 323px;
+                      height: 160px;
+                      border-radius: 12px;
+                      margin-left: 10px;
+                    }
+                    .swiper-container.slider3 {
+                      width: 652px;
+                      height: 100%;
+                    }
+              
+                    .custom-swiper-button-next {
+                      color: #FFFFFF;
+                      width: 65px;
+                      height: 65px;
+                      background: #31B97B;
+                      border-radius: 50%;
+                      font-weight: 600;
+                      position: absolute;
+                      top: 50%;
+                      right: 10px;
+                      transform: translateY(-50%);
+                      cursor: pointer;
+                    }
+              
+                    .custom-swiper-button-prev {
+                      color: #FFFFFF;
+                      width: 65px;
+                      height: 65px;
+                      background: #31B97B;
+                      border-radius: 50%;
+                      font-weight: 600;
+                      position: absolute;
+                      top: 50%;
+                      left: 10px;
+                      transform: translateY(-50%);
+                      cursor: pointer;
+                    }
+                  </style>
+                
+                <script>
+                  document.addEventListener('DOMContentLoaded', function () {
+                    const nextButton = document.querySelector('.custom-swiper-button-next');
+                    const prevButton = document.querySelector('.custom-swiper-button-prev');
+                    const swiperContainer = document.querySelector('.slider3');
+                
+                    // Initialize Swiper
+                    const swiper = new Swiper(swiperContainer, {
+                      slidesPerView: 1, // Show one slide at a time
+                      spaceBetween: 30, // Space between slides
+                      navigation: {
+                        nextEl: nextButton,
+                        prevEl: prevButton,
+                      },
+                      breakpoints: {
+                        768: {
+                          slidesPerView: 2, // Show two slides at a time
+                          spaceBetween: 0, // No space between slides
+                          slideToClickedSlide: true, // Allow clicking on slides to navigate
+                        }
+                      }
+                    });
+                
+                    // Event listener for next button click
+                    nextButton.addEventListener('click', function () {
+                      if (window.innerWidth <= 768) {
+                        swiper.slideTo(swiper.activeIndex );
+                      } else {
+                        swiper.slideTo(swiper.activeIndex + 1);
+                      }
+                    });
+                
+                    // Event listener for previous button click
+                    prevButton.addEventListener('click', function () {
+                      if (window.innerWidth >= 768) {
+                        swiper.slideTo(swiper.activeIndex - 1);
+                      } else {
+                        swiper.slideTo(swiper.activeIndex);
+                      }
+                    });
+                  });
+                </script>
+                
+              
+              
                 </div>
-                <div id="show"  class="col-lg-12  ms-4 " >
-                  <a style="height: fit-content; background-color: #2db378; border: none; margin: 20px;" href="#" type="button" class="btn btn-primary ">تصفح باقي المقالات </a>
-    
-                </div>
-                <!--.carousel-wrapper-->
-                </div>
+              </div>
+              
+              <style>
+                .carousel-dots {
+                  text-align: center;
+                }
+              
+                .dot-list {
+                  list-style: none;
+                  padding: 0;
+                  margin: 0;
+                }
+              
+                .custom-dot {
+                  display: inline-block;
+                  width: 10px;
+                  height: 10px;
+                  border-radius: 50%;
+                  background-color: #D9D9D940;
+                  margin: 0 5px;
+                  cursor: pointer;
+                  transition: background-color 0.3s ease; /* Smooth transition */
+                }
+              
+                .active-dot {
+                  background-color: #62B992;
+                }
+              </style>
+              
+              <!-- test -->
+               <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                  // Initialize Slider 1
+                  var slider1 = new Swiper('.slider1', {
+                    slidesPerView: 1, // Show only one slide
+                    spaceBetween: 30,
+                    loop: true,
+                    navigation: {
+                      nextEl: '.slider1 .swiper-button-next',
+                      prevEl: '.slider1 .swiper-button-prev',
+                    },
+                    // here the autoplay
+                    slideToClickedSlide: true,
+                    touch: true,
+                    breakpoints: {
+                      576: {
+                        slidesPerView: 3, 
+                      },
+                    },
+                  });
+                });
+              
+              </script> 
                 <style>
                   .section-wrapper {
   /* background-color:#ebebeb; */
@@ -731,168 +871,24 @@ li.dot.active {
 
 
                 </style>  
-                <script>
-                  /*variables */
-const itemClassName = "carousel__card";
-const nextbtn = document.getElementById("next");
-const prevbtn = document.getElementById("prev");
-const dots = document.querySelectorAll(".dot");
-
-let items = document.getElementsByClassName(itemClassName);
-let totalItems = items.length;
-let activeSlide = 0;
-let moving = false;
-let totalWidth = "";
-let singleAmountToMoveHorizontally = "";
-let positionX = "";
-let storeOldIndex = "";
-let differenceToMove = "";
-let amountOfTimesToLoopLeft = 0;
-let amountOfTimesToLoopRight = 0;
-
-/*functions*/
-function moveCardsHorizontally(amountToMove) {
-  for (let key in items) {
-    if (items.hasOwnProperty(key)) {
-      value = items[key];
-      //console.log(`items[${key}] = ${value}`);
-      items[key].style.transform = `translate(${amountToMove}px)`;
-    }
-  }
-}
-function getNewPosition(direction) {
-  totalWidth = items[0].parentElement.parentElement.parentElement.clientWidth; //1188  
-  singleAmountToMoveHorizontally = items[0].offsetWidth;  //422
-  console.log(
-    `singleAmountToMoveHorizontally = totalWidth:${totalWidth} / totalItems:${totalItems} = ${singleAmountToMoveHorizontally}`
-  );
-  if (direction === "right") {
-    console.log("parameter ->move right");
-    //We need to add one because the array index is 0 to n
-    positionX = Math.floor(singleAmountToMoveHorizontally * activeSlide + 1); //
-    console.log(
-      `positionX =  singleAmountToMoveHorizontally:${singleAmountToMoveHorizontally} * activeSlide:${
-        activeSlide + 1
-      } = ${positionX}`
-    );
-  } else if (direction === "left") {
-    console.log("parameter <- move left");
-    positionX = Math.floor(positionX - singleAmountToMoveHorizontally);
-    console.log(
-      `positionX = positionX - singleAmountToMoveHorizontally:${singleAmountToMoveHorizontally} = ${positionX}`
-    );
-  }
-  return positionX;
-}
-function disableInteraction() {
-  // Set 'moving' to true for the same duration as our transition.
-  // (0.5s = 500ms)
-  moving = true;
-  // setTimeout runs its function once after the given time
-  setTimeout(function () {
-    moving = false;
-  }, 500);
-}
-function toggleActiveClass(oldIndex, newIndex) {
-  //remove all active class
-  items[oldIndex].classList.remove("active");
-  dots[oldIndex].classList.remove("active");
-  //add active class to the one passed in by parameter
-  items[newIndex].classList.add("active");
-  dots[newIndex].classList.add("active");
-}
-function moveCardsDotsHorizontally(dir) {
-  moveCardsHorizontally(-getNewPosition(dir));
-  storeOldIndex = activeSlide;
-  console.log(`storeOldIndex= ${storeOldIndex}`);
-  if (dir === "left") {
-    activeSlide = activeSlide - 1;
-    console.log(`activeSlide - 1 = ${activeSlide}`);
-  } else {
-    activeSlide = activeSlide + 1;
-    console.log(`activeSlide + 1 = ${activeSlide}`);
-  }
-  toggleActiveClass(storeOldIndex, activeSlide);
-}
-
-function determineDifference(initial, final) {  
-  differenceToMove = Math.floor(final - initial);
-  console.log(`differenceToMove = final:${final} - initial:${initial} = ${differenceToMove}`);
-  return differenceToMove;
-}
-// Set event listeners
-nextbtn.onclick = function () {
-  // Check if carousel is moving, if not, allow interaction
-  if (!moving) {
-    console.log("next button clicked");
-    // temporarily disable interactivity
-    disableInteraction();
-    if (activeSlide === totalItems-1) {
-      console.log(
-        `active slide is activeSlide:${activeSlide} = totalItems:${totalItems} cant go more to the right`
-      );
-    } else {
-      moveCardsDotsHorizontally("right");
-    }
-  }
-};
-prevbtn.onclick = function () {
-  if (!moving) {
-    console.log("prev button clicked");
-    // temporarily disable interactivity
-    disableInteraction();
-    if (activeSlide === 0) {
-      console.log("active slide is 1 cant go more to the left");
-    } else {
-      moveCardsDotsHorizontally("left");
-    }
-  }
-};
-document.querySelectorAll(".dot").forEach((item, index) => {
-  item.addEventListener("click", (e) => {
-    console.log("clicked on dot");
-    //check what index was selected
-    console.log(`index:${index} and item:${item}`);
-    //get current slide and determine if the difference is greater or less than
-    if (index > activeSlide) {
-      console.log(`index:${index} > activeSlide:${activeSlide} move right`);      
-      amountOfTimesToLoopRight = Math.floor(determineDifference(index, activeSlide) * -1);
-      console.log(`amountOfTimesToLoopRight=${amountOfTimesToLoopRight}`);
-      for(var i=0;i<amountOfTimesToLoopRight;i++){
-        moveCardsDotsHorizontally("right");
-      }
-    } else {
-      console.log(`index:${index} < activeSlide:${activeSlide} move left`);
-      amountOfTimesToLoopLeft = determineDifference(index, activeSlide);  
-      console.log(`amountOfTimesToLoopLeft=${amountOfTimesToLoopLeft}`);    
-      for(var j=0;j<amountOfTimesToLoopLeft;j++){
-        moveCardsDotsHorizontally("left");
-      }      
-    }    
-  });
-});
-
-                </script>
+               
             </div>
             <div id="colmargin"  class="col-lg-3  " >
               <div class="me-auto " >
               <img id="paperabsolute"  src="./img/newspaper.svg" alt="">
-              <div class="col-lg-12">
-                <h3 id="h3news" style="text-align: center; "  >
-                  إقرأ أبرز المقالات 
-                </h3>
-              </div>
-              <div style="text-align: center;" class="col-lg-12">
-                <p>
-                  مقالات متعددة عن كل ما يخص جورجيا 
-                </p>
-              </div>
-             
-             
               
-            
             </div>
            
+            </div>
+            <div class="col-lg-12 ms-auto">
+              <h3 class="h3news"   >
+                إقرأ أبرز المقالات 
+              </h3>
+            </div>
+            <div  class="col-lg-12 makal">
+              <p>
+                مقالات متعددة عن كل ما يخص جورجيا 
+              </p>
             </div>
             <div id="hide"  class="col-lg-12  ">
               <a style="height: fit-content; background-color: #2db378; border: none; margin: 20px;" href="#" type="button" class="btn btn-primary ">تصفح باقي المقالات </a>
@@ -907,13 +903,17 @@ document.querySelectorAll(".dot").forEach((item, index) => {
             margin-top: 8rem;
 
           }
+          .makal{
+            text-align: right;
+          }
           #paperabsolute
           {
             max-width: 100%; position: absolute;max-width: 100%;
               position: absolute;
-              width: 225px;
+              width: 219px;
+              height: 216px;
               top: -50px;
-              right: 43px; 
+              right: 127px; 
           }
           #hide{
             display: none;
@@ -966,20 +966,30 @@ document.querySelectorAll(".dot").forEach((item, index) => {
     .swiper-slide {
       background-position: center;
       background-size: cover;
-      width: 300px;
-      height: 300px;
+      width: 360px;
+      height: 360px;
+
     }
 
     .swiper-slide img {
       display: block;
       width: 100%;
       border-radius: 30px;
-      height: 311px;
+      width: 360px;
+    height: 360px;
+
     }
   </style>
         </style>
         <style>
-          #h3news::after{
+          .h3news{
+            color: #2B2B2B;
+            font-weight: 600;
+            font-size: 48px;
+            text-align: right;
+            
+          }
+          .h3news::after{
   content: "";
       /* position: absolute; */
       display: inline-block;
