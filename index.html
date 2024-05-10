@@ -47,6 +47,7 @@
 }
       #logo2 {
         display: block;
+        margin-top: -11px;
       }
       @media only screen and (max-width: 600px) {
         #logo2 {
@@ -55,7 +56,7 @@
 }
     </style>
     <nav style="background-color: white; padding: 0;" class="navbar navbar-expand-lg bg-body-tertiary " >
-        <div class="container" dir="ltr" style="height: 105px;">
+        <div class="container navcont" dir="ltr" >
             
                
           <a id="logoo" href="#"><img style="  width: 123px; height: 69px;
@@ -64,13 +65,18 @@
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-         
+         <style>
+          .navcont{
+            height: 105px;
+            width: 1440px;
+          }
+         </style>
          
           
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="d-flex">
               <!-- <a style="display: inline-block;" href="#"><img style="max-width: 100%; width: 50px; height: 30px; margin-right: 5px;" src="./img/arabic flag.png" alt=""></a> -->
-              <a style="display: inline-block; width: 60px;" href="./indexen.html"><img style="max-width: 100%; width: 50px; height: 30px;margin-right: 5px; border-radius: 7px;" src="./img/english flag.png" alt=""></a>
+              <a style="display: inline-block; width: 60px;" href="./indexen.html"><img style="max-width: 100%; width: 60px; height: 41px;margin-right: 5px; border-radius: 7px;" src="./img/english flag.png" alt=""></a>
             </div>
             <form class="d-flex position-relative"  role="search">
                 
@@ -78,9 +84,11 @@
                 width: 264px;
                 height: 41px;
 
-                border-radius: 14px; " class="form-control " type="search" aria-label="Search">
+                border-radius: 10px;    margin-left: 46px; " class="form-control " type="search" aria-label="Search">
                 <div  id="sear">
-                  بحث
+                  <p class="psrch" style="display: inline-block;">
+                    بحث
+                  </p>
                   <i style="width: 19.68px;margin-left: 5px;
                   height: 19.68px;" class="fa fa-search"></i>
                 </div>
@@ -88,6 +96,14 @@
               </form>
 
               <style>
+                .fa-magnifying-glass:before, .fa-search:before{
+                  font-size: large;
+                }
+                .psrch{
+                  font-weight: 300;
+                  font-size: 18px;
+                  line-height: 22.5px;
+                }
                 #sear {
                   right: 8px;
     top: 10px;
@@ -110,20 +126,20 @@
                 </a>
               </li>
               <li class="nav-item" >
-                <a class="nav-link "  aria-current="page" href="#">الرئيسية</a>
+                <a class="nav-link px-0"  aria-current="page" href="#">الرئيسية</a>
               </li>
               
               <li class="nav-item"  >
-                <a class="nav-link "  aria-current="page" href="#offers"> البرامج السياحية</a>
+                <a class="nav-link active px-0"  aria-current="page" href="#offers"> البرامج السياحية</a>
               </li>
               <li class="nav-item" >
-                <a class="nav-link " aria-current="page" href="#">المقالات</a>
+                <a class="nav-link px-0" aria-current="page" href="#">المقالات</a>
               </li>
               <li class="nav-item" >
-                <a class="nav-link "  aria-current="page" href="#Feedback">أراء العملاء</a>
+                <a class="nav-link px-0"  aria-current="page" href="#Feedback">أراء العملاء</a>
               </li>
               <li class="nav-item" >
-                <a class="nav-link "  aria-current="page" href="#emsection">تواصل معنا</a>
+                <a class="nav-link px-0"  aria-current="page" href="#emsection">تواصل معنا</a>
               </li>
              
               
@@ -132,6 +148,23 @@
             </ul>
           </div>
             <style>
+              .nav-link {
+                font-size: 20px;
+              }
+              .nav-link::after{
+                content: "";
+                /* position: absolute; */
+                display: inherit;
+                left: 0;
+                width: 30px;
+                /* margin-left: 11px; */
+                /* margin-right: 60px; */
+                margin: auto;
+                height: 5px;
+                border-radius: 7px;
+                background-color: #31B97B;
+                margin-top: 6px;
+          }
               .nav-item {
                 font-weight: 300;
                 font-size: 20px;
@@ -153,16 +186,16 @@
           </div>
         </div>
       </nav>
-      <div  class="container">
-        <div class="row">
+      <div  class="container conthero">
+        <div class="row rowhero">
           <div class="col-lg-6">
-            <img style="max-width: 100% ;" src="./img/Liberity.png" alt="">
+            <img style="max-width: 100% ;" class="heroimg" src="./img/Liberity.png" alt="">
           </div>
-          <div class="col-lg-6 d-flex align-items-center">
+          <div class="col-lg-6 d-flex align-items-center pe-0">
             <div class="col">
-              <h2 class="herom grey" style="text-align:right;">
+              <p class="herom grey" style="text-align:right;">
                 شركة رحلات بدر 
-              </h2>
+              </p>
               <h1 class="hero2 grey" style="text-align:right;">
                 نحن خريطة رحلتك 
               </h1>
@@ -182,15 +215,34 @@
       </div>
 
       <style>
+        .heroimg{
+          width: 556px;
+          height: 620px;
+        }
+        .conthero {
+          margin-top: 123px;
+
+        }
+        .rowhero {
+          margin-right: 111px;
+    margin-left: 110px;
+        }
+        
         #backageshead{
-          background-image: url(./img/Text_Bar.svg);
+          background-image: url(./img/Text_Bar.png);
           background-repeat: no-repeat;
           background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 456.45px 67px;
+    background-color: #0f1b20;
+    border-radius: 15px;
+    margin-bottom: 0;
+        }
+        .hero2{
+          margin-bottom: 21px;
         }
         #spans{
           max-width: fit-content; margin-left: auto;    color: white;
-            padding: 20px;   text-align: right;background-image: url(./img/Text_Bar.svg);
+            padding: 20px;   text-align: right;background-image: url(./img/Text_Bar.png);
           background-size: contain;
           background-repeat: no-repeat;
           background-position: center;
@@ -225,14 +277,22 @@
 
       <div id="offers" class="container">
         <div class="row" style="text-align: right;">
-          <div style="text-align: right;" >
-            <h3 class="brow"  id="backageshead">
+          <div style="text-align: right; padding-right: 0;" >
+            <!-- <h3 class="brow"  id="backageshead">
               تصفح أبرز العروض والبكيجات
-            </h3>
+            </h3> -->
+            <p id="backageshead" class="brow">
+              تصفح أبرز العروض والبكيجات
+            </p>
+            
+            <!-- <img src="./img/Text_Bar.png" alt=""> -->
           </div>
         </div>
       </div>
       <style>
+        #offers {
+          margin-top: 301px;
+        }
         .brow{
           max-width: fit-content;
           margin-left: auto; 
@@ -266,33 +326,47 @@
 
 
 <!-- crousel test  -->
+<style>
 
+</style>
      
-<div class="container">
-  <div class="row" style="overflow: hidden;">
+<div class="container doss">
+  <div class="row rewd" style="overflow: hidden;">
 
 <div class="swiper-container slider1">
 <div id="sww" class="swiper-wrapper">
 <div id="ss" class="swiper-slide"><img src="./img/borjomi.jpg" alt=""></div>
-<div class="swiper-slide"><img src="./img/borjomi.jpg" alt=""></div>
-<div class="swiper-slide"><img src="./img/borjomi.jpg" alt=""></div>
+<div class="swiper-slide"><img src="./img/batumi.jpg" alt=""></div>
+<div class="swiper-slide"><img src="./img/tbilisi.jpg" alt=""></div>
 <div class="swiper-slide"><img src="./img/borjomi.jpg" alt=""></div>
 <div class="swiper-slide"><img src="./img/borjomi.jpg" alt=""></div>
 <div class="swiper-slide"><img src="./img/borjomi.jpg" alt=""></div>
 </div>
-<div class="new-carousel__dots">
-  <ul id="dotList" class="dot-list">
-    <li class="new-dot new-active-dot"></li>
-    <li class="new-dot"></li>
-    <li class="new-dot"></li>
-    <li class="new-dot"></li>
-    <li class="new-dot"></li>
-  </ul>
-</div>
+
 <div class="swiper-button-next"></div>
 <div class="swiper-button-prev"></div>
 </div>
+
 <style>
+  .swiper-backface-hidden .swiper-slide{
+    /* margin-right: 32px; */
+  }
+  .rewd {
+    margin-right: 110px;
+    margin-left: 110px;
+    height: 474px;
+    padding-top: 57px;
+    padding-bottom: 57px;
+    margin-bottom: 47px;
+
+  }
+  #sww{
+    height: 360px;
+    /* gap: 14px; */
+  }
+  .doss {
+  height: 560px;
+}
   .swiper-button-next, .swiper-button-prev{
     top: var(--swiper-navigation-top-offset, 43%);
   }
@@ -303,6 +377,8 @@
     background: #31B97B;
     border-radius: 50%;
     font-weight: 600;
+    right: 15px;
+    left: 1268px;
 }
 .swiper-button-prev{
   color: #FFFFFF;
@@ -311,6 +387,8 @@
     background: #31B97B;
     border-radius: 50%;
     font-weight: 600;
+    left: 15px;
+    right: 1268px;
 }
 
 .swiper-container {
@@ -331,6 +409,15 @@ align-items: center;
 
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
+  </div>
+  <div class="new-carousel__dots">
+    <ul id="dotList" class="dot-list">
+      <li class="new-dot new-active-dot"></li>
+      <li class="new-dot"></li>
+      <li class="new-dot"></li>
+      <li class="new-dot"></li>
+      <li class="new-dot"></li>
+    </ul>
   </div>
 </div> 
 
@@ -862,8 +949,10 @@ li.dot {
   margin: 0px 5px;
 }
 ul#dotList {
-  margin-top: 20px;
+  /* margin-top: 50px; */
   text-align: center;
+  margin-bottom: 26px;
+
 }
 li.dot.active {
   background-color: #525252;
@@ -881,9 +970,9 @@ li.dot.active {
            
             </div>
             <div class="col-lg-12 ms-auto">
-              <h3 class="h3news"   >
+              <p class="h3news"   >
                 إقرأ أبرز المقالات 
-              </h3>
+              </p>
             </div>
             <div  class="col-lg-12 makal">
               <p>
@@ -990,16 +1079,16 @@ li.dot.active {
             
           }
           .h3news::after{
-  content: "";
-      /* position: absolute; */
-      display: inline-block;
-      left: 0;
-
-      width: 5px;
-      margin-left: 10px;
-      height: 38px;
-      border-radius: 20px;
-      background-color: #2db378;
+            content: "";
+            /* position: absolute; */
+            display: inline-block;
+            left: 0;
+            width: 5px;
+            margin-left: 10px;
+            margin-right: 50px;
+            height: 38px;
+            /* border-radius: 1px; */
+            background-color: #31B97B;
           }
           
 img {
